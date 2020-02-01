@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  server: "http://admin-cxhs.localhost.run"
+  server: "http://localhost:3000"
 };
 
 /*

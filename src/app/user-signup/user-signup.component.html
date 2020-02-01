@@ -30,14 +30,25 @@
   <div class="container-fluid jumbotron">
       <br>
     <h2 style="text-align: center;">Sign Up</h2>
-    <form>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
+            <label for="role">Role</label>
+            <select name="role" id="role" formControlName="role" class="form-control">
+                <option value="rec">Recruiter</option>
+                <option value="can">Candidate</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="registerForm.get('role').value=='can'">
             <label for="firstName">First Name</label>
             <input type="text" formControlName="firstName" class="form-control"/>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="registerForm.get('role').value=='can'">
             <label for="lastName">Last Name</label>
             <input type="text" formControlName="lastName" class="form-control"/>
+        </div>
+        <div class="form-group" *ngIf="registerForm.get('role').value=='rec'">
+            <label for="companyName">Company Name</label>
+            <input type="text" formControlName="companyName" class="form-control"/>
         </div>
         <div class="form-group">
             <label for="username">Email</label>
@@ -47,13 +58,9 @@
             <label for="password">Password</label>
             <input type="password" formControlName="password" class="form-control"/>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" formControlName="password" class="form-control"/>
-        </div>
-        <div class="file-upload-wrapper">
-            <input type="file" id="input-file-now-custom-2" class="file-upload"
-           data-height="500" />
+        <div class="file-upload-wrapper" *ngIf="registerForm.get('role').value=='can'">
+            <label for="resume">Upload Your Resume</label>
+            <input type="file" id="input-file-now-custom-2" formControlName="resume" class="file-upload" data-height="500"/>
          </div>
          <br>
         <div class="form-group">
@@ -61,6 +68,6 @@
                 Sign Up
             </button>
         </div>
-    </form >
+    </form  >
 </div> 
 <router-outlet></router-outlet>
