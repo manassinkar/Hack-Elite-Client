@@ -1,0 +1,72 @@
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark" >
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#section-one">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section-two" >Stats</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section-three">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#section-four">Download App</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+      <a class="navbar-brand" [routerLink]="['home']">
+        <img src="https://s7.orientaltrading.com/is/image/OrientalTrading/13826467?$PDP_VIEWER_IMAGE$" width="30" height="30" alt="logo">
+        Smart Recruit
+      </a>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['login']">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['user-signup']">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+  <div class="container-fluid jumbotron">
+      <br>
+    <h2 style="text-align: center;">Sign Up</h2>
+    <form>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="username">Email</label>
+            <input type="text" formControlName="email" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" class="form-control"/>
+        </div>
+        <div class="file-upload-wrapper">
+            <input type="file" id="input-file-now-custom-2" class="file-upload"
+           data-height="500" />
+         </div>
+         <br>
+        <div class="form-group">
+            <button class="btn btn-primary">
+                Sign Up
+            </button>
+        </div>
+    </form >
+</div> 
+<router-outlet></router-outlet>
