@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HomeRecruiterComponent } from './home-recruiter/home-recruiter.component';
 import { HomeJobApplicantComponent } from './home-job-applicant/home-job-applicant.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HomeJobApplicantComponent } from './home-job-applicant/home-job-applica
     HomeComponent,
     LoginComponent,
     HomeRecruiterComponent,
-    HomeJobApplicantComponent
+    HomeJobApplicantComponent,
+    UserSignupComponent
   ],
   imports: [
     BrowserModule,

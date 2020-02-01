@@ -27,13 +27,24 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['login']">Login</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['user-signup']">Sign Up</a>
+            </li>
         </ul>
     </div>
   </nav>
   <div class="container-fluid jumbotron">
       <br>
-    <h2 style="text-align: center;">Login</h2>
-    <form   >
+    <h2 style="text-align: center;">Sign Up</h2>
+    <form>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control"/>
+        </div>
         <div class="form-group">
             <label for="username">Email</label>
             <input type="text" formControlName="email" class="form-control"/>
@@ -43,14 +54,17 @@
             <input type="password" formControlName="password" class="form-control"/>
         </div>
         <div class="form-group">
-            <select name="role" id="role" formControlName="role" class="form-control">
-                <option value="pwd">Recruiter</option>
-                <option value="elec">Job Applicant</option>
-            </select>
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" class="form-control"/>
         </div>
+        <div class="file-upload-wrapper">
+            <input type="file" id="input-file-now-custom-2" class="file-upload"
+           data-height="500" />
+         </div>
+         <br>
         <div class="form-group">
             <button class="btn btn-primary">
-                Login
+                Sign Up
             </button>
         </div>
     </form >

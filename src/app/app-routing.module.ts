@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HomeRecruiterComponent } from './home-recruiter/home-recruiter.component';
 import { HomeJobApplicantComponent } from './home-job-applicant/home-job-applicant.component';
-
+import { UserSignupComponent } from './user-signup/user-signup.component';
 const routes: Routes = [
   {
     path: '',
@@ -14,6 +14,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'user-signup',
+    component: UserSignupComponent,
     pathMatch: 'full'
   },
   {
