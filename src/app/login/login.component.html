@@ -22,18 +22,18 @@
         Smart Recruit
       </a>
     </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <!-- <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['login']">Login</a>
             </li>
         </ul>
-    </div>
+    </div> -->
   </nav>
   <div class="container-fluid jumbotron">
       <br>
     <h2 style="text-align: center;">Login</h2>
-    <form   >
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="username">Email</label>
             <input type="text" formControlName="email" class="form-control"/>
@@ -44,8 +44,8 @@
         </div>
         <div class="form-group">
             <select name="role" id="role" formControlName="role" class="form-control">
-                <option value="pwd">Recruiter</option>
-                <option value="elec">Applier</option>
+                <option value="rec">Recruiter</option>
+                <option value="can">Candidate</option>
             </select>
         </div>
         <div class="form-group">
@@ -53,6 +53,9 @@
                 Login
             </button>
         </div>
-    </form >
+    </form>
+    <div class="alert alert-danger w-100 mt-3" *ngIf="errMsg">
+        {{errMsg}}
+    </div>
 </div>
 <router-outlet></router-outlet>
