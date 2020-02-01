@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'home-recruiter',
     component: HomeRecruiterComponent,
   },
+  {
+    path: 'home-job-applicant',
+    component: HomeJobApplicantComponent
+  }
 ];
 
 @NgModule({

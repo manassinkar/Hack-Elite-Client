@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.authService.loginRecruiter(email,password).subscribe(
         user=>{
           this.errMsg = '';
-          this.router.navigate(['/recruiterDashboard']);
+          this.router.navigate(['/home-recruiter']);
         },
         error=>
         {
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(email,password).subscribe(
         user=>{
           this.errMsg = '';
-          this.router.navigate(['/userDashboard']);
+          this.router.navigate(['/home-job-applicant']);
         },
         error=>
         {
