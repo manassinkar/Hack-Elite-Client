@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeRecruiterComponent } from './home-recruiter/home-recruiter.component';
 import { HomeJobApplicantComponent } from './home-job-applicant/home-job-applicant.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
+import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
+import { ExploreCandidatesComponent } from './explore-candidates/explore-candidates.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
     LoginComponent,
     HomeRecruiterComponent,
     HomeJobApplicantComponent,
-    UserSignupComponent
+    UserSignupComponent,
+    ShortlistedCandidatesComponent,
+    ExploreCandidatesComponent
   ],
   imports: [
     BrowserModule,

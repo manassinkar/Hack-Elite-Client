@@ -11,6 +11,8 @@ import { AuthService } from '../services/auth.service';
 export class UserSignupComponent implements OnInit {
   public registerForm: FormGroup;
   public errMsg: String = "";
+  filename: string = '';
+  fileToUpload: File = null;
   constructor(private authService: AuthService, public fb: FormBuilder, public router: Router) { }
 
   ngOnInit() {
@@ -20,9 +22,11 @@ export class UserSignupComponent implements OnInit {
       lastName: [''],
       password: [''],
       role: ['can'],
-      resume: [''],
+      file: [''],
       companyName: ['']
     });
+    this.fileToUpload = null;
+    this.filename = 'Choose A File';
   }
 
   public get email()  {
@@ -46,23 +50,28 @@ export class UserSignupComponent implements OnInit {
     return this.registerForm.controls.role;
   }
 
-  public get resume()  {
-    return this.registerForm.controls.resume;
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      // console.log(file);
+      this.fileToUpload = event.target.files[0];
+      this.registerForm.get('file').setValue(file);
+      this.filename = event.target.files[0].name;
+    }
   }
-
 
   onSubmit()
   {
-    const email = this.registerForm.get('email').value;
-    const password = this.registerForm.get('password').value;
     const role = this.registerForm.get('role').value;
     if(role=="rec")
     {
+      const email = this.registerForm.get('email').value;
+      const password = this.registerForm.get('password').value;
       const companyName = this.registerForm.get('companyName').value;
       this.authService.registerRecruiter(email,password,companyName).subscribe(
         user=>{
           this.errMsg = '';
-          this.router.navigate(['/home-recruiter']);
+          this.router.navigate(['/login']);
         },
         error=>
         {
@@ -73,19 +82,33 @@ export class UserSignupComponent implements OnInit {
     }
     else
     {
-      const firstName = this.registerForm.get('firstName').value;
-      const lastName = this.registerForm.get('lastName').value;
-      const resume = this.registerForm.get('resume').value;
-      this.authService.registerUser(email,password,firstName,lastName,resume).subscribe(
-        user=>{
-          this.errMsg = '';
-          this.router.navigate(['/home-job-applicant']);
-        },
-        error=>
-        {
-          this.errMsg = error.error.message;
-        }
-      )
+      const formData = new FormData();
+      // formData.append('file', this.registerForm.get('file').value);
+      formData.append('lastName', this.registerForm.get('lastName').value);
+      formData.append('firstName', this.registerForm.get('firstName').value);
+      formData.append('email', this.registerForm.get('email').value);
+      formData.append('password', this.registerForm.get('password').value);
+      if(this.fileToUpload)
+      {
+        formData.append('file', this.fileToUpload, this.fileToUpload.name);
+        // console.log(formData);
+        this.authService.registerUser(formData).subscribe(
+          user=>{
+            this.errMsg = '';
+            this.fileToUpload = null;
+            this.router.navigate(['/login']);
+          },
+          error=>
+          {
+            console.log(error);
+            this.errMsg = error.error.message;
+          }
+        )  
+      }
+      else
+      {
+        console.log('No file Chosen');
+      }
     }
   }
 }

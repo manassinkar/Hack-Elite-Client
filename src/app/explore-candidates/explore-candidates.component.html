@@ -1,0 +1,44 @@
+<div id="content" class="p-4 p-md-5 pt-5">
+    <h1>Search Candidates</h1>
+    <div class="col-lg-8 col-md-12">
+        <div class="row justify-content-end">
+            <div class="input-group-append">
+                <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="categorySearch">Select Category:</label>
+                        <select class="form-control bg-light rounded-0 text-capitalize" formControlName="category" id="category-search" name="category-search">
+                            <option  [ngValue]="category" *ngFor="let category of categories">{{category}}</option>
+                        </select>
+                    </div>
+                    <button type="submit">
+                        Search
+                    </button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <br>
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" *ngIf="candidates">
+    <thead>
+      <tr>
+        <th class="th-sm">Candidate name
+        </th>
+        <th class="th-sm">Email
+        </th>
+        <th class="th-sm">Explore Candidate
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidate of candidates">
+        <td>{{candidate.firstName}} {{candidate.lastName}}</td>
+        <td>{{candidate.email}}</td>
+        <td>
+          <button class="btn btn-outline-primary">View</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<router-outlet></router-outlet>

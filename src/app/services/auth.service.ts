@@ -32,17 +32,31 @@ export class AuthService {
   {
     return this.http.post(`${environment.server}/recruiter/register`,{ email, password, companyName }).pipe(map(user =>
       {
-        localStorage.setItem('currentUser', JSON.stringify(user));
         return user;
       }));
   }
 
-  registerUser(email, password, firstName, lastName, resume)
+  registerUser(data:FormData)
   {
-    return this.http.post(`${environment.server}/user/register`,{ email, password, firstName, lastName, resume }).pipe(map(user =>
+    return this.http.post(`${environment.server}/user/register`,data).pipe(map(user =>
       {
-        localStorage.setItem('currentUser', JSON.stringify(user));
         return user;
+      }));
+  }
+
+  getCategories()
+  {
+    return this.http.get(`${environment.server}/user/getCategories`).pipe(map(category =>
+      {
+        return category;
+      }));
+  }
+
+  getCandidatesByCategory(category)
+  {
+    return this.http.get(`${environment.server}/user/usersByCategory?category=`+category).pipe(map(candidates =>
+      {
+        return candidates;
       }));
   }
 

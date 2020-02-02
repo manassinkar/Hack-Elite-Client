@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeRecruiterComponent } from './home-recruiter/home-recruiter.component';
 import { HomeJobApplicantComponent } from './home-job-applicant/home-job-applicant.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
+import { ExploreCandidatesComponent } from './explore-candidates/explore-candidates.component';
+import { ShortlistedCandidatesComponent } from './shortlisted-candidates/shortlisted-candidates.component';
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +26,18 @@ const routes: Routes = [
   {
     path: 'home-recruiter',
     component: HomeRecruiterComponent,
+    children:[
+      {
+        path: 'explore',
+        component: ExploreCandidatesComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'shortlist',
+        component: ShortlistedCandidatesComponent,
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: 'home-job-applicant',

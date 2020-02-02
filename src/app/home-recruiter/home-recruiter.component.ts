@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare function foo(): any;
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-recruiter',
@@ -8,11 +8,11 @@ declare function foo(): any;
 })
 export class HomeRecruiterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.foo();
-
+    this.router.navigate(['./explore'], {relativeTo: this.route});
   }
   foo() {
     "use strict";
@@ -26,6 +26,12 @@ export class HomeRecruiterComponent implements OnInit {
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
+  }
+
+  logout()
+  {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['']);
   }
 
 }

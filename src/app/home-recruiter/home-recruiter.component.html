@@ -1,91 +1,29 @@
 <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar">
-        <div class="custom-menu">
-            <button type="button" id="sidebarCollapse" class="btn btn-primary">
-      <i class="fa fa-bars"></i>
-      <span class="sr-only">Toggle Menu</span>
-    </button>
-</div>
-        <div class="p-4">
-          <h1><a href="index.html" class="logo">Recruiter<span>Recruiter_name</span></a></h1>
-    <ul class="list-unstyled components mb-5">
-      <li class="active">
-        <a [routerLink]="['./homepwd']">  <i class="material-icons">home</i> Home</a>
-      </li>
-      <li>
-          <a [routerLink]="['./pendingInspections']"> <i class="material-icons">event_note</i> Search Apt Candidates</a>
-      </li>
-      <li>
-      <a [routerLink]="['./accepted']"><i class="material-icons">verified_user</i> Shortlisted Candidates</a>
-      </li>
-      
-      <li>
-        <a href="#"><i class="material-icons">navigate_before
-        </i> Logout</a>
-
-      </li>
-      
-    </ul>
-
-    <div class="footer">
-        <p>Created by Hack Elite</p>
+  <nav id="sidebar">
+    <div class="custom-menu">
+      <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        <i class="fa fa-bars"></i>
+        <span class="sr-only">Toggle Menu</span>
+      </button>
     </div>
-
-  </div>
-</nav>
-<div id="content" class="p-4 p-md-5 pt-5">
-    <h1>Search Candidates</h1>
-    <div class="col-lg-8 col-md-12">
-        <div class="row justify-content-end">
-          <div class="input-group col-lg-10 col-md-12" style="border:solid grey 1px;">
-            <div class="input-group-prepend" ><span class="form-control bg-light text-white rounded-0 text-primary"><i class="fa fa-search" aria-hidden="true"></i></span></div>
-            <input class="form-control" id="search-box" type="text" name="search" placeholder="Search for... " required="required"/>
-            <div class="input-group-append">
-              <select class="form-control bg-light rounded-0 text-capitalize" id="search-filter" name="search-filter">
-                <option value="listitem">All</option>
-                <option value="name">By Skills</option>
-                <option value="address">By Locations</option>
-                <option value="email">By Category</option>
-              </select>
-            </div>
-          </div>
-        </div>
+    <div class="p-4">
+      <h1><a href="index.html" class="logo">Recruiter<span>Recruiter_name</span></a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li>
+            <a [routerLink]="['explore']"> <i class="material-icons">event_note</i> Search Apt Candidates</a>
+          </li>
+          <li>
+            <a [routerLink]="['shortlist']"><i class="material-icons">verified_user</i> Shortlisted Candidates</a>
+          </li>
+          <li>
+            <a href="#" (click)="logout()"><i class="material-icons">navigate_before
+            </i> Logout</a>
+          </li>
+        </ul>
+      <div class="footer">
+          <p>Created by Hack Elite</p>
       </div>
-    <br>
-<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-    <thead>
-      <tr>
-        <th class="th-sm">Candidate name
-        </th>
-        <th class="th-sm">Email
-        </th>
-        <th class="th-sm">Phone number
-        </th>
-        <th class="th-sm">Smart score
-        </th>
-        <th class="th-sm">Date Updated
-        </th>
-        <th class="th-sm">Source
-        </th>
-        <th class="th-sm">Explore Candidate
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Minakshi Kudalkar</td>
-        <td>kudalkarminakshi07@gmail.com</td>
-        <td>9819743332</td>
-        <td>A</td>
-        <td>31 January 2020</td>
-        <td>Indeed+Resume</td>
-        <td>
-          <button class="btn btn-outline-primary">View</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
+    </div>
+  </nav>
 </div>
-
-</div>
+<router-outlet></router-outlet>
