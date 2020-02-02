@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-job-applicant',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeJobApplicantComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.foo();
+  }
+  foo() {
+    "use strict";
+    var fullHeight = function() {
+      $('.js-fullheight').css('height', $(window).height());
+      $(window).resize(function(){
+        $('.js-fullheight').css('height', $(window).height());
+      });
+    };
+    fullHeight();
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+  }
+
+  logout()
+  {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['']);
   }
 
 }
