@@ -11,6 +11,8 @@ export class ExploreCandidatesComponent implements OnInit {
   public categoryForm: FormGroup;
   public categorySelected: Boolean = false;
   public allSkills: any = [];
+  public searchSkills: any = [];
+  public viewSet: any = [];
   public categories: any = [];
   public candidates: any = [];
   public errMsg: string = '';
@@ -21,6 +23,8 @@ export class ExploreCandidatesComponent implements OnInit {
       category: ['']
     });
     this.categorySelected = false;
+    this.searchSkills = [];
+    this.viewSet = [];
     this.allSkills= [];
     this.categories= [];
     this.candidates= [];
@@ -54,6 +58,36 @@ export class ExploreCandidatesComponent implements OnInit {
     return 1
   }
 
+  updateViewSet()
+  {
+    const newSet: any = [];
+    this.searchSkills.array.forEach(skill =>
+    {
+      this.candidates.forEach(candidate =>
+        {
+          if(candidate.skills.includes(skill))
+          {
+            newSet.push(candidate);
+          }
+        });
+    });
+    this.viewSet = newSet;
+  }
+
+  addSearchSkill(skill)
+  {
+    console.log(skill);
+    this.searchSkills.push(skill);
+    this.updateViewSet();
+  }
+
+  removeSearchSkill(skill)
+  {
+    console.log(skill);
+    this.searchSkills.splice(this.searchSkills.indexOF(skill),1);
+    this.updateViewSet();
+  }
+
   onSubmit()
   {
     const category = this.categoryForm.get('category').value;
@@ -62,6 +96,8 @@ export class ExploreCandidatesComponent implements OnInit {
       (candidates) =>
       {
         this.candidates = candidates;
+        this.viewSet = this.candidates
+        this.categorySelected = true;
         let map = new Map();
         this.candidates.forEach(candidate => {
           candidate.skills.forEach(skill =>

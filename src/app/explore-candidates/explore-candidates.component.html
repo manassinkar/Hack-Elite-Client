@@ -14,6 +14,16 @@
                         Search
                     </button>
                 </form>
+                <div *ngIf="categorySelected">
+                    <select class="form-control bg-light rounded-0 text-capitalize" formControlName="category" id="category-search" name="category-search">
+                        <option (click)="addSearchSkill(skill)" [ngValue]="skill" *ngFor="let skill of allSkills">{{skill}}</option>
+                    </select>
+                </div>
+                <div *ngIf="searchSkills">
+                    <div *ngFor="let skill of searchSkills">
+                        <button class="btn btn-danger" (click)="removeSearchSkill(skill)">Remove {{skill}}</button>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
@@ -31,7 +41,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let candidate of candidates">
+      <tr *ngFor="let candidate of viewSet">
         <td>{{candidate.firstName}} {{candidate.lastName}}</td>
         <td>{{candidate.email}}</td>
         <td>
