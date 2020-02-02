@@ -14,8 +14,8 @@
                     </button>
                 </form>
                 <div *ngIf="categorySelected">
-                    <select class="form-control bg-light rounded-0 text-capitalize" formControlName="category" id="category-search" name="category-search">
-                        <option (click)="addSearchSkill(skill)" [ngValue]="skill" *ngFor="let skill of allSkills">{{skill}}</option>
+                    <select class="form-control bg-light rounded-0 text-capitalize" id="skill-search" name="skill-search" (change)="addSearchSkill($event.target.value)">
+                        <option (ngClick)="addSearchSkill(skill.skill)" [ngValue]="skill" *ngFor="let skill of allSkills">{{skill.skill}}</option>
                     </select>
                 </div>
                 <div *ngIf="searchSkills">

@@ -58,18 +58,22 @@ export class ExploreCandidatesComponent implements OnInit {
     return 1
   }
 
+  containsAll(skills, candidate){ 
+    for(var i = 0; i < skills.length; i++){
+       if($.inArray(skills[i], candidate.skills) == -1) return false;
+    }
+    return true;
+  }
+
   updateViewSet()
   {
     const newSet: any = [];
-    this.searchSkills.array.forEach(skill =>
-    {
-      this.candidates.forEach(candidate =>
-        {
-          if(candidate.skills.includes(skill))
-          {
-            newSet.push(candidate);
-          }
-        });
+    this.candidates.forEach(candidate => {
+      var match = this.containsAll(this.searchSkills,candidate);
+      if(match)
+      {
+        newSet.push(candidate);
+      }
     });
     this.viewSet = newSet;
   }
@@ -84,7 +88,7 @@ export class ExploreCandidatesComponent implements OnInit {
   removeSearchSkill(skill)
   {
     console.log(skill);
-    this.searchSkills.splice(this.searchSkills.indexOF(skill),1);
+    this.searchSkills.splice(this.searchSkills.indexOf(skill),1);
     this.updateViewSet();
   }
 
