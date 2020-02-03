@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  server: "http://admin-llri.localhost.run"
+  server: "http://admin-vpay.localhost.run"
 };
 
 /*
